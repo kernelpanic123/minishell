@@ -1,6 +1,6 @@
 NAME = minishell
 
-SRC = lexer.c
+SRC = check_string.c
 
 CFLAGS =
 
