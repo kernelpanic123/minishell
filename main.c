@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 21:51:16 by abtouait          #+#    #+#             */
-/*   Updated: 2025/08/29 21:52:05 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/08/30 18:41:39 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,10 @@
 
 int main(void)
 {
-	
+	t_data data;
+
+	init_struct(&data);
+	char *input;
+	input = readline("$minishell: ");
+	printf("%s", delete_espace(input, &data));
 }

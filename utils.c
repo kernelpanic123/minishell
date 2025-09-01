@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_data.c                                        :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/29 20:27:48 by abtouait          #+#    #+#             */
-/*   Updated: 2025/08/30 18:44:42 by abtouait         ###   ########.fr       */
+/*   Created: 2025/08/30 18:23:10 by abtouait          #+#    #+#             */
+/*   Updated: 2025/08/30 18:24:03 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void init_struct(t_data *data)
+int ft_strlen(char *str)
 {
-	data->double_quotes = 0;
-	data->simple_quotes = 0;
+	int i;
+
+	i = 0;
+	while (str[i] != '\0')
+		i++;
+	return (i);
 }

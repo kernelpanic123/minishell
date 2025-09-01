@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 16:00:41 by abtouait          #+#    #+#             */
-/*   Updated: 2025/08/30 16:24:17 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/08/30 19:07:08 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,27 @@ char *delete_espace(char *input, t_data *data)
 {
 	int i;
 	int j;
-	
-	j = 0;
+	char *dupe;
+
 	i = 0;
+	j = 0;
+	dupe = malloc(sizeof(char) * ft_strlen(input) + 1);
 	while (input[i] != '\0')
 	{
-		if (input[i] == '"')
-			data->double_quotes = 1;
-		if (input[i] == '\'')
-			data->simple_quotes = 1;
-		if (input[i] != ' '  && data->double_quotes != )
-			
-		
+		if (input[i] == '\'' && !data->double_quotes)
+			data->simple_quotes = !data->simple_quotes;
+		if (input[i] == '"' && !data->simple_quotes)
+			data->double_quotes = !data->double_quotes;
+		if (input[i] == ' ' && !(data->simple_quotes || data->double_quotes) && j > 0 && dupe[j-1] != ' ')
+			dupe[j++] = input[i];
+		else if (input[i] != ' ' || (data->simple_quotes || data->double_quotes))
+			dupe[j++] = input[i];
+		i++;
 	}
+	if (j > 0 && dupe[j-1] == ' ')
+		j--;
+	dupe[j] = '\0';
+	if (data->double_quotes || data->simple_quotes)
+		return (NULL);
+	return (dupe);
 }
-cd    test    | "   test   "
