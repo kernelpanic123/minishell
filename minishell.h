@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 16:01:42 by abtouait          #+#    #+#             */
-/*   Updated: 2025/08/30 19:13:13 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/09/01 18:51:05 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@
 #define APPEND	5    // >>
 #define HEREDOC	6    // <<
 
-typedef struct s_lexer// ls -la | >> a > b
+typedef struct s_lexer
 {
-	char	*str; //ls
-	int		token;// 1
-	struct s_lexer	*next; str   : ls ->  str   : -la  -> str  : | -> str  : >>. -> str : a -> >
-}	t_lexer;			   token : 1  ->  token : 1    -> token: 2 ->token : 5. ->  token  
+	char	*str;
+	int		token;
+	struct s_lexer	*next;
+}	t_lexer;
 
 typedef struct s_data
 {
@@ -43,6 +43,7 @@ typedef struct s_data
 
 //utils
 int ft_strlen(char *str);
+int is_whitespace(char c);
 
 //init_data
 void init_struct(t_data *data);

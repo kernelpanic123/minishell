@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 18:23:10 by abtouait          #+#    #+#             */
-/*   Updated: 2025/08/30 18:24:03 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/09/01 18:51:47 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,11 @@ int ft_strlen(char *str)
 	while (str[i] != '\0')
 		i++;
 	return (i);
+}
+int is_whitespace(char c)
+{
+	if (c >= 9 && c <= 13 || c == ' ')
+		return (1);
+	else
+		return (0);
 }
