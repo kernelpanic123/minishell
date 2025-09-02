@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 16:01:42 by abtouait          #+#    #+#             */
-/*   Updated: 2025/09/01 18:51:05 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/09/02 05:11:55 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct s_data
 //utils
 int ft_strlen(char *str);
 int is_whitespace(char c);
+int skip_quotes(char *input, t_data *data);
 
 //init_data
 void init_struct(t_data *data);
