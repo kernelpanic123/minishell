@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 16:01:42 by abtouait          #+#    #+#             */
-/*   Updated: 2025/09/02 05:11:55 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/09/05 04:37:06 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@
 # include <stdbool.h>
 
 
-#define WORD	1    // word
-#define PIPE	2    // |
-#define TRUNC	3    // >
-#define INPUT	4    // <
-#define APPEND	5    // >>
-#define HEREDOC	6    // <<
+#define WORD		1    // word
+#define PIPE		2    // |
+#define GREAT		3    // >
+#define LESS		4    // <
+#define GREATGREAT	5    // >>
+#define LESSLESS	6    // <<
 
 typedef struct s_lexer
 {
@@ -51,5 +51,8 @@ void init_struct(t_data *data);
 
 //check_string
 char *delete_espace(char *input, t_data *data);
+
+//lexer
+int what_type_token(char *str);
 
 #endif

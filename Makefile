@@ -1,6 +1,6 @@
 NAME = minishell
 
-SRC = check_string.c init_data.c utils.c main.c
+SRC = check_string.c init_data.c utils.c main.c lexer.c
 
 CFLAGS =
 

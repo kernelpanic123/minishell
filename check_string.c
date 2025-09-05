@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 16:00:41 by abtouait          #+#    #+#             */
-/*   Updated: 2025/09/03 01:43:46 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/09/05 02:21:40 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ char *delete_espace(char *input, t_data *data)
 		return (NULL);
 	return (dupe);
 }
-int check_pipe(char *input)
+int first_pipe(char *input)
 {
 	int i;
 

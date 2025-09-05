@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 21:51:16 by abtouait          #+#    #+#             */
-/*   Updated: 2025/09/03 00:31:26 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/09/05 04:37:26 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int main(void)
 	while (1)
 	{
 		input = readline("$minishell: ");
-		printf("%d\n", skip_quotes(input, &data));
+		printf("%d\n", what_type_token(input));
+		
+		free(input);
 	}
 }
