@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 19:30:09 by abtouait          #+#    #+#             */
-/*   Updated: 2025/09/05 04:39:12 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/09/05 04:50:16 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,29 +33,22 @@ void add_element(char *input, t_lexer *list)
 		while (input[i] != ' ')
 			tmp[i] = input[i];
 		list->str = tmp;
-		list->token = //fonction what_type_token() pour pas te casser la tete
+		list->token = what_type_token(tmp);
 		i++;
 	}
 }
 int what_type_token(char *str)
 {
-	int i;
-	
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == '|')
-			return (PIPE);
-		else if (str[i] && str[i + 1] == '>>')
-			return (GREATGREAT);
-		else if (str[i] && str[i + 1] == '<<')
-			return (LESSLESS);
-		else if (str[i] == '>')
-			return (GREAT);
-		else if (str[i] == '<')
-			return (LESS);
-		else
-			return (WORD);
-		i++;
-	}
+	if (str[0] == '|')
+		return (PIPE);
+	else if (str[0] == '>' && str[1] == '>')
+		return (GREATGREAT);
+	else if (str[0] == '<' && str[1] == '<')
+		return (LESSLESS);
+	else if (str[0] == '>')
+		return (GREAT);
+	else if (str[0] == '<')
+		return (LESS);
+	else
+		return (WORD);
 }
