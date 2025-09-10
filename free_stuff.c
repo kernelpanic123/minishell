@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   free_stuff.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/29 21:51:16 by abtouait          #+#    #+#             */
-/*   Updated: 2025/09/10 03:49:35 by abtouait         ###   ########.fr       */
+/*   Created: 2025/09/09 08:50:34 by abtouait          #+#    #+#             */
+/*   Updated: 2025/09/09 09:55:03 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int main(void)
+void free_list_token(t_lexer **list)
 {
-	t_data data;
-	t_lexer *list = NULL;
+	t_lexer *tmp;
+	t_lexer *clone;
 
-	init_struct(&data);
-	char *input;
-	while (1)
+	if (!list)
+		return ;
+	clone = *list;
+	while (clone)
 	{
-		input = readline("$minishell: ");
-		add_element(input, &list);
-		printf("%d\n", parse(&list));
-		free_list_token(&list);
-		free(input);
+		tmp = clone->next;
+		free(clone->str);
+		free(clone);
+		clone = tmp;
 	}
+	*list = NULL;
 }

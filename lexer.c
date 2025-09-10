@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 19:30:09 by abtouait          #+#    #+#             */
-/*   Updated: 2025/09/05 04:50:16 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/09/09 04:05:26 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,25 +18,53 @@ t_lexer	*new_node(int token, char *str)
 
 	new = malloc(sizeof(t_lexer));
 	new->token = token;
-	new->str = str; //oublie pas strdup la chaine gros neuille
+	new->str = ft_strdup(str);
 	new->next = NULL;
 	return (new);
 }
-void add_element(char *input, t_lexer *list)
+//cd caca | echo "cacacacaca         "
+static int	skip_token(char *input, int i)
 {
-	int i;
-	char *tmp;
+	char	quote;
+
+	if (input[i] == '"' || input[i] == '\'')
+	{
+		quote = input[i];
+		i++;
+		while (input[i] && input[i] != quote)
+			i++;
+		if (input[i] == quote)
+			i++;
+	}
+	else
+	{
+		while (input[i] && !is_whitespace(input[i]))
+			i++;
+	}
+	return (i);
+}
+
+void	add_element(char *input, t_lexer **list)
+{
+	int		i;
+	int		start;
+	char	*token;
 
 	i = 0;
 	while (input[i])
 	{
-		while (input[i] != ' ')
-			tmp[i] = input[i];
-		list->str = tmp;
-		list->token = what_type_token(tmp);
-		i++;
+		while (input[i] && is_whitespace(input[i]))
+			i++;
+		if (!input[i])
+			break ;
+		start = i;
+		i = skip_token(input, i);
+		token = ft_substr(input, start, i - start);
+		add_to_back(list, token, what_type_token(token));
+		free(token);
 	}
 }
+
 int what_type_token(char *str)
 {
 	if (str[0] == '|')
@@ -51,4 +79,25 @@ int what_type_token(char *str)
 		return (LESS);
 	else
 		return (WORD);
+}
+void add_to_back(t_lexer **list, char *str, int token)
+{
+	t_lexer *new; 
+	t_lexer *current;
+	
+	new = new_node(token, str);
+
+	if (*list == NULL)
+	{
+		*list = new;
+	}
+	else
+	{
+		current = *list;
+		while (current->next != NULL)
+		{
+			current = current->next;
+		}
+		current->next = new;
+	}
 }

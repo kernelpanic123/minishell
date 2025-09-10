@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils_2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/29 21:51:16 by abtouait          #+#    #+#             */
-/*   Updated: 2025/09/10 03:49:35 by abtouait         ###   ########.fr       */
+/*   Created: 2025/09/09 04:11:34 by abtouait          #+#    #+#             */
+/*   Updated: 2025/09/10 03:12:30 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int main(void)
+char *ft_strdup(char *s1)
 {
-	t_data data;
-	t_lexer *list = NULL;
+	char *s2;
+	int i;
 
-	init_struct(&data);
-	char *input;
-	while (1)
+	while (s1[i])
+		i++;
+	s2 = malloc(sizeof(char) * i + 1);
+	i = 0;
+	while (s1[i])
 	{
-		input = readline("$minishell: ");
-		add_element(input, &list);
-		printf("%d\n", parse(&list));
-		free_list_token(&list);
-		free(input);
+		s2[i] = s1[i];
+		i++;
 	}
+	s2[i] = '\0';
+	return (s2);
 }

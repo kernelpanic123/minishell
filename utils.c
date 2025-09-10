@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 18:23:10 by abtouait          #+#    #+#             */
-/*   Updated: 2025/09/04 21:31:13 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/09/09 08:05:05 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,41 @@ int skip_quotes(char *input, t_data *data)
 			i++;
 		i++;
 	}
+	data->double_quotes = false;
+	data->simple_quotes = false;
 	return (i);
+}
+
+char *ft_substr(char *str, int start, int len)
+{
+    char *result;
+    int i;
+    
+    if (start >= ft_strlen(str))
+        return (ft_strdup(""));
+    
+    if (len > ft_strlen(str) - start)
+        len = ft_strlen(str) - start;
+    
+    result = malloc(len + 1);
+    if (!result)
+        return (NULL);
+    
+    i = 0;
+    while (i < len)
+    {
+        result[i] = str[start + i];
+        i++;
+    }
+    result[i] = '\0';
+    return (result);
+}
+void print_list(t_lexer *list)
+{
+    int count = 1;
+    while (list)
+    {
+        printf("%s\n", list->str);
+        list = list->next;
+    }
 }
