@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 18:23:10 by abtouait          #+#    #+#             */
-/*   Updated: 2025/09/09 08:05:05 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/09/10 08:31:55 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,9 +81,9 @@ char *ft_substr(char *str, int start, int len)
 void print_list(t_lexer *list)
 {
     int count = 1;
-    while (list)
-    {
-        printf("%s\n", list->str);
-        list = list->next;
+	while (list)
+	{
+		printf("%s\n", list->str);
+		list = list->next;
     }
 }
