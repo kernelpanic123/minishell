@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 04:11:34 by abtouait          #+#    #+#             */
-/*   Updated: 2025/09/10 03:12:30 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/09/10 10:51:04 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ char *ft_strdup(char *s1)
 	char *s2;
 	int i;
 
+	i = 0;
 	while (s1[i])
 		i++;
 	s2 = malloc(sizeof(char) * i + 1);

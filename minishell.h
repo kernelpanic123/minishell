@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 16:01:42 by abtouait          #+#    #+#             */
-/*   Updated: 2025/09/10 08:16:17 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/09/11 06:00:23 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void print_list(t_lexer *list);
 
 //init_data
 void init_struct(t_data *data);
+int process_input(t_lexer **list, char *input, t_data *data);
 
 //check_string
 char *delete_espace(char *input, t_data *data);
@@ -57,7 +58,6 @@ int check_pipe(t_lexer **list);
 int check_first_token(t_lexer **list);
 int parse(t_lexer **list);
 int check_invalid_token(t_lexer **list);
-
 
 //lexer
 int what_type_token(char *str);
