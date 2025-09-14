@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 16:01:42 by abtouait          #+#    #+#             */
-/*   Updated: 2025/09/11 06:00:23 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/09/14 16:48:25 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,13 @@ typedef struct s_lexer
 	int		token;
 	struct s_lexer	*next;
 }	t_lexer;
+
+typedef struct s_env
+{
+	char	*variable;
+	char 	*value;
+	struct s_lexer	*next;
+}	t_env;
 
 typedef struct s_data
 {
@@ -71,5 +78,8 @@ char *ft_strdup(char *s1);
 
 //free_stuff
 void free_list_token(t_lexer **list);
+
+//env
+char **copy_env(char **env);
 
 #endif

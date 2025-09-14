@@ -1,44 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/29 21:51:16 by abtouait          #+#    #+#             */
-/*   Updated: 2025/09/14 16:56:22 by abtouait         ###   ########.fr       */
+/*   Created: 2025/09/14 15:52:23 by abtouait          #+#    #+#             */
+/*   Updated: 2025/09/14 16:48:16 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/*int main(void)
+char **copy_env(char **env)
 {
-	t_data data;
-	t_lexer *list = NULL;
+	int i;
+	char **dupe;
 
-	init_struct(&data);
-	char *input;
-	while (1)
+	i = 0;
+	while (env[i])
 	{
-		input = readline("$minishell: ");
-		process_input(&list, input, &data);
-		print_list(list);
-		free_list_token(&list);
-		free(input);
-	}
-}*/
-int main(int argc, char **argv, char **envp)
-{
-	char **str;
-	int i = 0;
-	(void)argc;
-	(void)argv;
-	str = copy_env(envp);
-	while (str[i])
-	{
-		printf("%s\n", str[i]);
+		dupe[i] = ft_strdup(env[i]);
 		i++;
 	}
-		
+	return (dupe);
 }
