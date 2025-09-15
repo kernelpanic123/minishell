@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 18:23:10 by abtouait          #+#    #+#             */
-/*   Updated: 2025/09/10 10:51:33 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/09/15 15:23:01 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,11 +78,11 @@ char *ft_substr(char *str, int start, int len)
     result[i] = '\0';
     return (result);
 }
-void print_list(t_lexer *list)
+void print_list(t_env *list)
 {
 	while (list)
 	{
-		printf("%s\n", list->str);
+		printf("%s\n", list->variable);
 		list = list->next;
     }
 }

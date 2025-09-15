@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/14 15:52:23 by abtouait          #+#    #+#             */
-/*   Updated: 2025/09/14 19:32:23 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/09/15 14:51:46 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,23 +41,23 @@ char *get_value(char *str)
 	return (ft_substr(str, i + 1, ft_strlen(str)));
 }
 
-t_env *copy_env(char **env)
+char **copy_env(char **env)
 {
-	t_env *return_env;
+	char **dupe;
 	int i;
-	char *variable;
-	char *value;
-	
-	return_env = NULL;
+
+	i = 0;
+	while (env[i])
+		i++;
+	dupe = malloc(sizeof(char *) * i + 1);
 	i = 0;
 	while (env[i])
 	{
-		variable = get_variable(env[i]);
-		value = get_value(env[i]);
-		addback_env(&return_env, new_env_node(variable, value));
+		dupe[i] = ft_strdup(env[i]);
 		i++;
 	}
-	return (return_env);
+	dupe[i] = NULL;
+	return (dupe);
 }
 t_env	*new_env_node(char *variable, char *value)
 {
@@ -69,11 +69,12 @@ t_env	*new_env_node(char *variable, char *value)
 	new->next = NULL;
 	return (new);
 }
-void addback_env(t_env **list, t_env *new)
+void addback_env(t_env **list, char *variable, char *value)
 {
+	t_env *new;
 	t_env *current;
 
-	current = *list;
+	new = new_env_node(variable, value);
 
 	if (!*list)
 	{
@@ -81,6 +82,7 @@ void addback_env(t_env **list, t_env *new)
 	}
 	else
 	{
+		current = *list;
 		while (current->next)
 			current = current->next;
 		current->next = new;

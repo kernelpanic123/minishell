@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 16:01:42 by abtouait          #+#    #+#             */
-/*   Updated: 2025/09/14 19:20:10 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/09/15 15:47:28 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int ft_strlen(char *str);
 int is_whitespace(char c);
 int skip_quotes(char *input, t_data *data);
 char *ft_substr(char *str, int start, int len);
-void print_list(t_lexer *list);
+void print_list(t_env *list);
 
 //init_data
 void init_struct(t_data *data);
@@ -85,8 +85,15 @@ char *ft_strdup(char *s1);
 void free_list_token(t_lexer **list);
 
 //env
-t_env *copy_env(char **env);
-void addback_env(t_env **list, t_env *new);
+char **copy_env(char **env);
+void addback_env(t_env **list, char *variable, char *value);
 t_env	*new_env_node(char *variable, char *value);
+char *get_variable(char *str);
+char *get_value(char *str);
+
+//env_free
+void add_env_list(t_env **env, char **envp);
+void free_env_copy(char **str);
+void free_list_env(t_env **list);
 
 #endif
