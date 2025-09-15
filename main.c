@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 21:51:16 by abtouait          #+#    #+#             */
-/*   Updated: 2025/09/14 16:56:22 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/09/14 19:31:53 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,16 @@
 }*/
 int main(int argc, char **argv, char **envp)
 {
-	char **str;
+	t_env *env;
 	int i = 0;
 	(void)argc;
 	(void)argv;
-	str = copy_env(envp);
-	while (str[i])
+	// for ( int i = 0; envp[i]; i++)
+	// 	printf("%s\n", envp[i]);
+	env = copy_env(envp);
+	while (env)
 	{
-		printf("%s\n", str[i]);
-		i++;
+		printf("%s=%s\n", env->variable, env->value);
+		env = env->next;
 	}
-		
 }

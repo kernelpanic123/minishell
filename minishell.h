@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 16:01:42 by abtouait          #+#    #+#             */
-/*   Updated: 2025/09/14 16:48:25 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/09/14 19:20:10 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef struct s_env
 {
 	char	*variable;
 	char 	*value;
-	struct s_lexer	*next;
+	struct s_env	*next;
 }	t_env;
 
 typedef struct s_data
@@ -47,6 +47,11 @@ typedef struct s_data
 	bool simple_quotes;
 	bool double_quotes;
 }	t_data;
+
+typedef struct s_minishell
+{
+	
+}	t_minishell;
 
 //utils
 int ft_strlen(char *str);
@@ -80,6 +85,8 @@ char *ft_strdup(char *s1);
 void free_list_token(t_lexer **list);
 
 //env
-char **copy_env(char **env);
+t_env *copy_env(char **env);
+void addback_env(t_env **list, t_env *new);
+t_env	*new_env_node(char *variable, char *value);
 
 #endif
