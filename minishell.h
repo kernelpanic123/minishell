@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 16:01:42 by abtouait          #+#    #+#             */
-/*   Updated: 2025/09/15 15:47:28 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/09/30 01:00:17 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 # include <readline/history.h>
 # include <stdlib.h>
 # include <stdbool.h>
-
 
 #define WORD		1    // word
 #define PIPE		2    // |
@@ -48,9 +47,18 @@ typedef struct s_data
 	bool double_quotes;
 }	t_data;
 
+typedef struct s_expand
+{
+	bool	in_single;
+	bool	in_double;
+	t_env	*env;
+	int		exit_status;
+}	t_expand;
+
 typedef struct s_minishell
 {
-	
+	t_env	*env;
+	int		exit_status;
 }	t_minishell;
 
 //utils
@@ -58,7 +66,7 @@ int ft_strlen(char *str);
 int is_whitespace(char c);
 int skip_quotes(char *input, t_data *data);
 char *ft_substr(char *str, int start, int len);
-void print_list(t_env *list);
+void print_list(t_lexer *list);
 
 //init_data
 void init_struct(t_data *data);
@@ -79,17 +87,18 @@ void	add_element(char *input, t_lexer **list);
 void add_to_back(t_lexer **list, char *str, int token);
 
 //utils_2
-char *ft_strdup(char *s1);
+char 	*ft_strdup(char *s1);
+int		ft_strcmp(char *s1, char *s2);
 
 //free_stuff
-void free_list_token(t_lexer **list);
+void	free_list_token(t_lexer **list);
 
 //env
-char **copy_env(char **env);
-void addback_env(t_env **list, char *variable, char *value);
+char	**copy_env(char **env);
+void	addback_env(t_env **list, char *variable, char *value);
 t_env	*new_env_node(char *variable, char *value);
-char *get_variable(char *str);
-char *get_value(char *str);
+char	*get_variable(char *str);
+char	*get_value(char *str);
 
 //env_free
 void add_env_list(t_env **env, char **envp);
