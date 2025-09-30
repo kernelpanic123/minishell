@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 16:01:42 by abtouait          #+#    #+#             */
-/*   Updated: 2025/09/30 01:00:17 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/09/30 01:33:14 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,9 @@ void add_to_back(t_lexer **list, char *str, int token);
 //utils_2
 char 	*ft_strdup(char *s1);
 int		ft_strcmp(char *s1, char *s2);
+int		ft_isalnum(char c);
+int		get_nb_len(int n);
+char	*ft_itoa(int n);
 
 //free_stuff
 void	free_list_token(t_lexer **list);
@@ -104,5 +107,24 @@ char	*get_value(char *str);
 void add_env_list(t_env **env, char **envp);
 void free_env_copy(char **str);
 void free_list_env(t_env **list);
+
+//dollar_handle
+char *find_env_value(t_env *env, char *variable);
+int	get_var_name_len(char *str, int i);
+void	update_quotes_state(char c, bool *single, bool *doubl);
+int	get_normal_var_size(char *input, int *i, t_env *env);
+int	add_var_size(char *input, int *i, t_env *env);
+
+//dollar_handle2
+int	calculate_expanded_size(char *input, t_env *env, t_data *data);
+void	copy_exit_status(char *result, int *j, int exit_status);
+void	copy_var_value(char *result, int *j, char *var_value);
+void	expand_normal_var(char *input, int *i, char *result, int *j, t_env *env);
+void	expand_var_in_result(char *input, int *i, char *result, int *j, t_env *env, int exit_status);
+
+//expander
+void	process_char(char *input, int *i, char *result, int *j, t_expand *exp);
+char	*expand_variables(char *input, t_env *env, t_data *data, int exit_status);
+char	*process_expansion(char *input, t_env *env, t_data *data, int exit_status);
 
 #endif
