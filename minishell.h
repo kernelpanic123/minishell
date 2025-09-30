@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 16:01:42 by abtouait          #+#    #+#             */
-/*   Updated: 2025/09/30 01:33:14 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/09/30 17:02:50 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void print_list(t_lexer *list);
 
 //init_data
 void init_struct(t_data *data);
-int process_input(t_lexer **list, char *input, t_data *data);
+int	process_input(t_lexer **list, char *input, t_data *data, t_env *env, int exit_status);
 
 //check_string
 char *delete_espace(char *input, t_data *data);

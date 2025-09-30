@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 21:51:16 by abtouait          #+#    #+#             */
-/*   Updated: 2025/09/30 01:38:05 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/09/30 17:10:10 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,11 @@ int	main(int argc, char **argv, char **envp)
 	t_data		data;
 	t_minishell	shell;
 	char		*input;
-	char		*expanded;
+	t_lexer		*list;
 
 	(void)argc;
 	(void)argv;
+	list = NULL;
 	init_struct(&data);
 	shell.env = NULL;
 	shell.exit_status = 0;
@@ -46,9 +47,9 @@ int	main(int argc, char **argv, char **envp)
 		input = readline("minishell$ ");
 		if (!input)
 			break ;
-		expanded = process_expansion(input, shell.env, &data, shell.exit_status);
-		printf("%s\n", expanded);
-		free(expanded);
+		if (process_input(&list, input, &data, shell.env, shell.exit_status))
+			print_list(list);
+		free_list_token(&list);
 		free(input);
 	}
 	free_list_env(&shell.env);
