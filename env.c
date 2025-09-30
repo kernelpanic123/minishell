@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/14 15:52:23 by abtouait          #+#    #+#             */
-/*   Updated: 2025/09/15 14:51:46 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/09/30 18:46:39 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ char **copy_env(char **env)
 	i = 0;
 	while (env[i])
 		i++;
-	dupe = malloc(sizeof(char *) * i + 1);
+	dupe = malloc(sizeof(char *) * (i + 1));
 	i = 0;
 	while (env[i])
 	{

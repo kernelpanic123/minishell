@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 20:27:48 by abtouait          #+#    #+#             */
-/*   Updated: 2025/09/30 17:02:34 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/09/30 18:45:39 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int	process_input(t_lexer **list, char *input, t_data *data, t_env *env, int exi
 	add_element(expanded, list);
 	free(str);
 	free(expanded);
+	if (!*list)
+		return (0);
 	if (parse(list) == 0)
 		return (0);
 	return (1);
