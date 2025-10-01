@@ -6,11 +6,11 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 00:44:29 by abtouait          #+#    #+#             */
-/*   Updated: 2025/09/30 01:13:04 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/01 16:29:52 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
 int	calculate_expanded_size(char *input, t_env *env, t_data *data)
 {

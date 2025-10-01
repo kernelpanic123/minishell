@@ -6,11 +6,11 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 19:30:09 by abtouait          #+#    #+#             */
-/*   Updated: 2025/09/14 19:12:45 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/01 16:29:52 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
 t_lexer	*new_node(int token, char *str)
 {

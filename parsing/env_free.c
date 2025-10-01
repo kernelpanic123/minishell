@@ -6,11 +6,11 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 14:55:31 by abtouait          #+#    #+#             */
-/*   Updated: 2025/09/15 15:46:54 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/01 16:29:52 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
 void add_env_list(t_env **env, char **envp)
 {

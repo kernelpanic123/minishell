@@ -6,11 +6,11 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 00:57:53 by abtouait          #+#    #+#             */
-/*   Updated: 2025/09/30 01:17:17 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/01 16:29:52 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
 void	process_char(char *input, int *i, char *result, int *j, t_expand *exp)
 {

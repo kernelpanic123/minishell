@@ -6,11 +6,11 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 18:23:10 by abtouait          #+#    #+#             */
-/*   Updated: 2025/09/25 19:21:55 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/01 16:29:52 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
 int ft_strlen(char *str)
 {
