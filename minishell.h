@@ -61,6 +61,15 @@ typedef struct s_minishell
 	int		exit_status;
 }	t_minishell;
 
+//EXEC
+
+//ft_env.c
+void ft_env(t_env *list);
+
+//pwd
+void ft_pwd(t_env *list);
+
+
 //utils
 int ft_strlen(char *str);
 int is_whitespace(char c);

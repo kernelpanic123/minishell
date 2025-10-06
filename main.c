@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 21:51:16 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/01 16:32:27 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/06 19:48:04 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 		free(input);
 	}
 }*/
-int	main(int argc, char **argv, char **envp)
+/*int	main(int argc, char **argv, char **envp)
 {
 	t_data		data;
 	t_minishell	shell;
@@ -54,4 +54,14 @@ int	main(int argc, char **argv, char **envp)
 	}
 	free_list_env(&shell.env);
 	return (0);
+}*/
+int main(int argc, char **argv, char **envp)
+{
+	t_minishell	shell;
+
+	shell.env = NULL;
+	shell.exit_status = 0;
+	add_env_list(&shell.env, envp);
+	ft_pwd(shell.env);
+	
 }
