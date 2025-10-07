@@ -18,6 +18,7 @@ $(NAME): $(OBJ)
 clean:
 	rm -f *.o
 	rm -f parsing/*.o
+	rm -f built_in/*.o
 
 fclean: clean
 	rm -f $(NAME)
