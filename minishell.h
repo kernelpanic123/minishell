@@ -61,6 +61,20 @@ typedef struct s_minishell
 	int		exit_status;
 }	t_minishell;
 
+typedef struct s_redir
+{
+	int				type;
+	char			*file;
+	struct s_redir	*next;	// prochaine redirection
+}	t_redir;
+
+typedef struct s_cmd
+{
+	char			**args;
+	t_redir			*redirs;
+	struct s_cmd	*next;
+}	t_cmd;
+
 //EXEC
 
 //ft_env.c
@@ -75,7 +89,7 @@ int ft_strlen(char *str);
 int is_whitespace(char c);
 int skip_quotes(char *input, t_data *data);
 char *ft_substr(char *str, int start, int len);
-void print_list(t_lexer *list);
+char	*remove_quotes(char *str);
 
 //init_data
 void init_struct(t_data *data);
