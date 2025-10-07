@@ -83,6 +83,20 @@ void ft_env(t_env *list);
 //pwd
 void ft_pwd(t_env *list);
 
+//exec/parse
+t_cmd	*parse_commands(t_lexer *tokens);
+
+//exec/parser_cmd
+t_cmd	*new_cmd(void);
+void	add_arg(t_cmd *cmd, char *arg);
+t_redir	*new_redir(int type, char *file);
+void	add_redir(t_cmd *cmd, int type, char *file);
+int	is_redir(int token);
+
+//parse_utils
+void	free_redir_list(t_redir *redirs);
+void	free_cmd_list(t_cmd *cmd_list);
+void	print_cmd_list(t_cmd *cmd_list);
 
 //utils
 int ft_strlen(char *str);
