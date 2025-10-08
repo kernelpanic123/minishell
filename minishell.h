@@ -19,6 +19,7 @@
 # include <readline/history.h>
 # include <stdlib.h>
 # include <stdbool.h>
+# include <fcntl.h>
 
 #define WORD		1    // word
 #define PIPE		2    // |
@@ -77,6 +78,26 @@ typedef struct s_cmd
 
 //EXEC
 
+//exec.c
+char	**env_to_array(t_env *env);
+void	execute_simple_cmd(t_cmd *cmd, t_minishell *shell);
+
+//split_path
+char	*extract_one_path(char *path_env, int *i);
+char	**split_path(char *path_env);
+char	*join_path(char *dir, char *cmd);
+char	*find_command_path(char *cmd, t_env *env);
+
+//get_path_env
+char	*get_path_env(t_env *env);
+
+//exec/utils
+char	*ft_strchr(char *s, int c);
+void	free_array(char **array);
+int	file_exists(char *path);
+int	count_paths(char *path_env);
+char	*ft_strjoin(char *variable, char *value);
+
 //ft_env.c
 void ft_env(t_env *list);
 
@@ -119,7 +140,6 @@ int check_invalid_token(t_lexer **list);
 //lexer
 int what_type_token(char *str);
 t_lexer	*new_node(int token, char *str);
-static int	skip_token(char *input, int i);
 void	add_element(char *input, t_lexer **list);
 void add_to_back(t_lexer **list, char *str, int token);
 
