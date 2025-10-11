@@ -79,6 +79,43 @@ typedef struct s_cmd
 
 //EXEC
 
+//check_bulitin
+int	is_builtin(char *cmd);
+int	execute_builtin(char **args, t_minishell *shell);
+
+//ft_exit
+int	ft_exit(t_minishell *shell);
+
+//ft_cd
+void	update_env_var(t_env **env, char *var, char *value);
+int		ft_cd(char **args, t_env **env);
+
+//ft_export
+void	print_export(t_env *env);
+int	is_valid_char(char c, int first);
+int	is_valid_identifier(char *str);
+int	ft_export(char **args, t_env **env);
+
+
+//ft_unset
+void	remove_env_var(t_env **env, char *del_var);
+int	ft_unset(char **args, t_env **env);
+
+//ft_echo
+int	ft_echo(char **args);
+
+//ft_env.c
+int ft_env(t_env *list);
+
+//pwd
+int ft_pwd(void);
+
+//redir
+int	handle_less(char *file);
+int	handle_great(char *file);
+int	handle_greatgreat(char *file);
+int	handle_redirection(t_redir *redirs);
+
 //exec.c
 char	**env_to_array(t_env *env);
 void	execute_simple_cmd(t_cmd *cmd, t_minishell *shell);
@@ -98,12 +135,6 @@ void	free_array(char **array);
 int	file_exists(char *path);
 int	count_paths(char *path_env);
 char	*ft_strjoin(char *variable, char *value);
-
-//ft_env.c
-void ft_env(t_env *list);
-
-//pwd
-void ft_pwd(t_env *list);
 
 //exec/parse
 t_cmd	*parse_commands(t_lexer *tokens);

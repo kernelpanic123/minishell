@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_env.c                                           :+:      :+:    :+:   */
+/*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/11 02:05:49 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/11 02:06:05 by abtouait         ###   ########.fr       */
+/*   Created: 2025/10/11 03:41:36 by abtouait          #+#    #+#             */
+/*   Updated: 2025/10/11 03:41:56 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int ft_env(t_env *list)
+int	ft_exit(t_minishell *shell)
 {
-	while (list != NULL)
-	{
-		printf("%s=%s\n", list->variable, list->value);
-		list = list->next;
-	}
-	return (0);
+	printf("exit\n");
+	free_list_env(&shell->env);
+	exit(shell->exit_status);
 }

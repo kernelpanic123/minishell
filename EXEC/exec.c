@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 05:12:59 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/08 05:20:18 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/11 03:58:31 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,11 @@ void	execute_simple_cmd(t_cmd *cmd, t_minishell *shell)
 
 	if (!cmd || !cmd->args || !cmd->args[0])
 		return ;
+	if (is_builtin(cmd->args[0]))
+	{
+		shell->exit_status = execute_builtin(cmd->args, shell);
+		return ;
+	}
 	path = find_command_path(cmd->args[0], shell->env);
 	if (!path)
 	{
@@ -59,6 +64,8 @@ void	execute_simple_cmd(t_cmd *cmd, t_minishell *shell)
 	pid = fork();
 	if (pid == 0)
 	{
+		if (!handle_redirection(cmd->redirs))
+			exit(1);
 		envp = env_to_array(shell->env);
 		execve(path, cmd->args, envp);
 		perror("execve");
