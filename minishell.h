@@ -83,6 +83,13 @@ typedef struct s_cmd
 
 //EXEC
 
+//exec
+void	execute_simple_cmd(t_cmd *cmd, t_minishell *shell);
+
+//exec_2
+char	**env_to_array(t_env *env);
+void	execute_commands(t_cmd *cmd, t_minishell *shell);
+
 //signal
 void	handle_signal(int sig);
 void	setup_signals_interactive(void);
@@ -138,11 +145,6 @@ int	handle_less(char *file);
 int	handle_great(char *file);
 int	handle_greatgreat(char *file);
 int	handle_redirection(t_redir *redirs);
-
-//exec.c
-char	**env_to_array(t_env *env);
-void	execute_simple_cmd(t_cmd *cmd, t_minishell *shell);
-void	execute_commands(t_cmd *cmd, t_minishell *shell);
 
 //split_path
 char	*extract_one_path(char *path_env, int *i);
