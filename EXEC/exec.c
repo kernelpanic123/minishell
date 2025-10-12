@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 05:12:59 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/12 18:11:49 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/12 21:02:43 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,24 @@ void	execute_simple_cmd(t_cmd *cmd, t_minishell *shell)
 
 	if (!cmd || !cmd->args || !cmd->args[0])
 		return ;
-	if (is_builtin(cmd->args[0]))
+	if (is_builtin(cmd->args[0]) && !cmd->redirs)
 	{
 		shell->exit_status = execute_builtin(cmd->args, shell);
+		return ;
+	}
+	if (is_builtin(cmd->args[0]) && cmd->redirs)
+	{
+		pid = fork();
+		if (pid == 0)
+		{
+			if (!handle_redirection(cmd->redirs))
+				exit(1);
+			shell->exit_status = execute_builtin(cmd->args, shell);
+			exit(shell->exit_status);
+		}
+		waitpid(pid, &status, 0);
+		if (WIFEXITED(status))
+			shell->exit_status = WEXITSTATUS(status);
 		return ;
 	}
 	path = find_command_path(cmd->args[0], shell->env);

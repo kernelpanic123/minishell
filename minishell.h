@@ -20,7 +20,7 @@
 # include <stdlib.h>
 # include <stdbool.h>
 # include <fcntl.h>
-#include <sys/wait.h>
+# include <sys/wait.h>
 
 #define WORD		1    // word
 #define PIPE		2    // |

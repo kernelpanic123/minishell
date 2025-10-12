@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 21:51:16 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/08 05:22:02 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/12 19:40:51 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ int	main(int argc, char **argv, char **envp)
 			cmd_list = parse_commands(tokens);
 			if (cmd_list)
 			{
-				execute_simple_cmd(cmd_list, &shell);
+				execute_commands(cmd_list, &shell);
 				free_cmd_list(cmd_list);
 			}
 		}
