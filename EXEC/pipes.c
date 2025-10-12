@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/11 06:50:02 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/12 18:03:43 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/12 22:21:25 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	execute_cmd_in_pipe(t_cmd *cmd, t_minishell *shell)
 	char	*path;
 	char	**envp;
 
+	signal(SIGINT, SIG_DFL);
+	signal(SIGQUIT, SIG_DFL);
 	if (is_builtin(cmd->args[0]))
 	{
 		shell->exit_status = execute_builtin(cmd->args, shell);

@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 21:22:47 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/09 21:52:29 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/12 21:36:11 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,11 @@ int	handle_redirection(t_redir *redirs)
 		else if (redirs->type == GREATGREAT)
 		{
 			if (!handle_greatgreat(redirs->file))
+				return (0);
+		}
+		else if (redirs->type == LESSLESS)
+		{
+			if (!handle_heredoc(redirs->heredoc_content))
 				return (0);
 		}
 		redirs = redirs->next;

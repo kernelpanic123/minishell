@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 14:55:31 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/01 16:29:52 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/12 22:39:15 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void add_env_list(t_env **env, char **envp)
 		addback_env(env, variable, value);
 		i++;
 	}
-	free(dupe);
+	free_env_copy(dupe);
 }
 void free_env_copy(char **str)
 {

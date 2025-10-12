@@ -21,6 +21,9 @@
 # include <stdbool.h>
 # include <fcntl.h>
 # include <sys/wait.h>
+# include <signal.h>
+
+extern int	g_signal_received;
 
 #define WORD		1    // word
 #define PIPE		2    // |
@@ -67,6 +70,7 @@ typedef struct s_redir
 {
 	int				type;
 	char			*file;
+	char			*heredoc_content;
 	struct s_redir	*next;	// prochaine redirection
 }	t_redir;
 
@@ -78,6 +82,20 @@ typedef struct s_cmd
 }	t_cmd;
 
 //EXEC
+
+//signal
+void	handle_signal(int sig);
+void	setup_signals_interactive(void);
+void	setup_signals_execution(void);
+void	setup_signals_heredoc(void);
+
+//heredoc
+char	*read_heredoc(char *delimiter);
+int		handle_heredoc(char *str);
+void	process_heredocs(t_cmd *cmd);
+
+//utils2
+char	*strjoin_heredoc(char *s1, char *s2);
 
 //pipes
 void	execute_cmd_in_pipe(t_cmd *cmd, t_minishell *shell);

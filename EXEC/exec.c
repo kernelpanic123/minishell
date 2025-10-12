@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 05:12:59 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/12 21:02:43 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/12 22:22:30 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,16 +49,21 @@ void	execute_simple_cmd(t_cmd *cmd, t_minishell *shell)
 
 	if (!cmd || !cmd->args || !cmd->args[0])
 		return ;
+	
 	if (is_builtin(cmd->args[0]) && !cmd->redirs)
 	{
 		shell->exit_status = execute_builtin(cmd->args, shell);
 		return ;
 	}
+	
 	if (is_builtin(cmd->args[0]) && cmd->redirs)
 	{
 		pid = fork();
 		if (pid == 0)
 		{
+			signal(SIGINT, SIG_DFL);
+			signal(SIGQUIT, SIG_DFL);
+			
 			if (!handle_redirection(cmd->redirs))
 				exit(1);
 			shell->exit_status = execute_builtin(cmd->args, shell);
@@ -69,6 +74,7 @@ void	execute_simple_cmd(t_cmd *cmd, t_minishell *shell)
 			shell->exit_status = WEXITSTATUS(status);
 		return ;
 	}
+	
 	path = find_command_path(cmd->args[0], shell->env);
 	if (!path)
 	{
@@ -76,10 +82,14 @@ void	execute_simple_cmd(t_cmd *cmd, t_minishell *shell)
 		shell->exit_status = 127;
 		return ;
 	}
+	
 	pid = fork();
 	if (pid == 0)
 	{
-		if (!handle_redirection(cmd->redirs))
+		signal(SIGINT, SIG_DFL);
+		signal(SIGQUIT, SIG_DFL);
+		
+		if (cmd->redirs && !handle_redirection(cmd->redirs))
 			exit(1);
 		envp = env_to_array(shell->env);
 		execve(path, cmd->args, envp);
@@ -89,7 +99,16 @@ void	execute_simple_cmd(t_cmd *cmd, t_minishell *shell)
 	else
 	{
 		waitpid(pid, &status, 0);
-		if (WIFEXITED(status))
+		if (WIFSIGNALED(status))
+		{
+			int sig = WTERMSIG(status);
+			if (sig == SIGQUIT)
+				printf("Quit: %d\n", sig);
+			else if (sig == SIGINT)
+				printf("\n");
+			shell->exit_status = 128 + sig;
+		}
+		else if (WIFEXITED(status))
 			shell->exit_status = WEXITSTATUS(status);
 		free(path);
 	}

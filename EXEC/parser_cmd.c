@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 19:58:58 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/07 21:01:36 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/12 21:39:01 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ t_redir	*new_redir(int type, char *file)
 		return (NULL);
 	redir->type = type;
 	redir->file = remove_quotes(file);
+	redir->heredoc_content = NULL;
 	redir->next = NULL;
 	return (redir);
 }

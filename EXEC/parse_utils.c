@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 20:33:39 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/07 23:30:30 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/12 21:38:35 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	free_redir_list(t_redir *redirs)
 	{
 		tmp = redirs->next;
 		free(redirs->file);
+		if (redirs->heredoc_content)
+			free(redirs->heredoc_content);
 		free(redirs);
 		redirs = tmp;
 	}
