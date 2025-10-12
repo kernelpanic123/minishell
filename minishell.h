@@ -231,7 +231,7 @@ int	get_normal_var_size(char *input, int *i, t_env *env);
 int	add_var_size(char *input, int *i, t_env *env);
 
 //dollar_handle2
-int	calculate_expanded_size(char *input, t_env *env, t_data *data);
+int	calculate_expanded_size(char *input, t_env *env);
 void	copy_exit_status(char *result, int *j, int exit_status);
 void	copy_var_value(char *result, int *j, char *var_value);
 void	expand_normal_var(char *input, int *i, char *result, int *j, t_env *env);
@@ -239,7 +239,7 @@ void	expand_var_in_result(char *input, int *i, char *result, int *j, t_env *env,
 
 //expander
 void	process_char(char *input, int *i, char *result, int *j, t_expand *exp);
-char	*expand_variables(char *input, t_env *env, t_data *data, int exit_status);
+char	*expand_variables(char *input, t_env *env, int exit_status);
 char	*process_expansion(char *input, t_env *env, t_data *data, int exit_status);
 
 #endif

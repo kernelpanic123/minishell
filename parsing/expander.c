@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 00:57:53 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/01 16:29:52 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/13 00:52:34 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	process_char(char *input, int *i, char *result, int *j, t_expand *exp)
 	else
 		result[(*j)++] = input[(*i)++];
 }
-char	*expand_variables(char *input, t_env *env, t_data *data, int exit_status)
+char	*expand_variables(char *input, t_env *env, int exit_status)
 {
 	int			size;
 	char		*result;
@@ -37,7 +37,7 @@ char	*expand_variables(char *input, t_env *env, t_data *data, int exit_status)
 	int			j;
 	t_expand	exp;
 
-	size = calculate_expanded_size(input, env, data);
+	size = calculate_expanded_size(input, env);
 	result = malloc(size);
 	if (!result)
 		return (NULL);
@@ -58,6 +58,6 @@ char	*process_expansion(char *input, t_env *env, t_data *data, int exit_status)
 		return (ft_strdup(""));
 	if (!env || !data)
 		return (ft_strdup(input));
-	return (expand_variables(input, env, data, exit_status));
+	return (expand_variables(input, env, exit_status));
 }
 
