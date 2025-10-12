@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 05:12:59 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/11 03:58:31 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/12 18:11:49 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,4 +78,13 @@ void	execute_simple_cmd(t_cmd *cmd, t_minishell *shell)
 			shell->exit_status = WEXITSTATUS(status);
 		free(path);
 	}
+}
+void	execute_commands(t_cmd *cmd, t_minishell *shell)
+{
+	if (cmd->next)
+	{
+		execute_pipeline(cmd, shell);
+		return ;
+	}
+	execute_simple_cmd(cmd, shell);
 }

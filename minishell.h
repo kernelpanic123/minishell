@@ -79,6 +79,11 @@ typedef struct s_cmd
 
 //EXEC
 
+//pipes
+void	execute_cmd_in_pipe(t_cmd *cmd, t_minishell *shell);
+void	setup_pipe_redirs(int prev_fd, int pipe_fd[2], t_cmd *cmd);
+void	execute_pipeline(t_cmd *cmd_list, t_minishell *shell);
+
 //check_bulitin
 int	is_builtin(char *cmd);
 int	execute_builtin(char **args, t_minishell *shell);
@@ -119,6 +124,7 @@ int	handle_redirection(t_redir *redirs);
 //exec.c
 char	**env_to_array(t_env *env);
 void	execute_simple_cmd(t_cmd *cmd, t_minishell *shell);
+void	execute_commands(t_cmd *cmd, t_minishell *shell);
 
 //split_path
 char	*extract_one_path(char *path_env, int *i);
