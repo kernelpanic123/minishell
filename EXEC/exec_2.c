@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 00:35:44 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/13 00:36:43 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/13 18:35:18 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	execute_commands(t_cmd *cmd, t_minishell *shell)
 	}
 	execute_simple_cmd(cmd, shell);
 }
+
 char	**env_to_array(t_env *env)
 {
 	char	**envp;

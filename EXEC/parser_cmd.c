@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 19:58:58 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/12 21:39:01 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/13 18:33:47 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,6 @@ void	add_redir(t_cmd *cmd, int type, char *file)
 
 int	is_redir(int token)
 {
-	return (token == GREAT || token == LESS 
+	return (token == GREAT || token == LESS
 		|| token == GREATGREAT || token == LESSLESS);
 }

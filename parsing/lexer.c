@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 19:30:09 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/08 05:25:49 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/13 18:07:19 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ t_lexer	*new_node(int token, char *str)
 	new->next = NULL;
 	return (new);
 }
+
 //cd caca | echo "cacacacaca         "
 static int	skip_token(char *input, int i)
 {
@@ -65,7 +66,7 @@ void	add_element(char *input, t_lexer **list)
 	}
 }
 
-int what_type_token(char *str)
+int	what_type_token(char *str)
 {
 	if (str[0] == '|')
 		return (PIPE);
@@ -80,13 +81,13 @@ int what_type_token(char *str)
 	else
 		return (WORD);
 }
-void add_to_back(t_lexer **list, char *str, int token)
-{
-	t_lexer *new; 
-	t_lexer *current;
-	
-	new = new_node(token, str);
 
+void	add_to_back(t_lexer **list, char *str, int token)
+{
+	t_lexer	*new;
+	t_lexer	*current;
+
+	new = new_node(token, str);
 	if (*list == NULL)
 	{
 		*list = new;

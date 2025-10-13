@@ -6,17 +6,17 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 16:00:41 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/01 16:29:52 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/13 18:44:52 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-char *delete_espace(char *input, t_data *data)
+char	*delete_espace(char *input, t_data *data)
 {
-	int i;
-	int j;
-	char *dupe;
+	int		i;
+	int		j;
+	char	*dupe;
 
 	i = 0;
 	j = 0;
@@ -33,16 +33,17 @@ char *delete_espace(char *input, t_data *data)
 			dupe[j++] = input[i];
 		i++;
 	}
-	if (j > 0 && is_whitespace(dupe[j-1]))
+	if (j > 0 && is_whitespace(dupe[j - 1]))
 		j--;
 	dupe[j] = '\0';
 	if (data->double_quotes || data->simple_quotes)
 		return (NULL);
 	return (dupe);
 }
-int check_first_token(t_lexer **list)
+
+int	check_first_token(t_lexer **list)
 {
-	t_lexer *tmp;
+	t_lexer	*tmp;
 
 	tmp = *list;
 	if (tmp->token == PIPE)
@@ -59,9 +60,10 @@ int check_first_token(t_lexer **list)
 	}
 	return (1);
 }
-int check_last_token(t_lexer **list)
+
+int	check_last_token(t_lexer **list)
 {
-	t_lexer *tmp;
+	t_lexer	*tmp;
 
 	tmp = *list;
 	while (tmp->next)
@@ -80,10 +82,11 @@ int check_last_token(t_lexer **list)
 	}
 	return (1);
 }
-int check_invalid_token(t_lexer **list)
+
+int	check_invalid_token(t_lexer **list)
 {
-	t_lexer *tmp;
-	
+	t_lexer	*tmp;
+
 	tmp = *list;
 	while (tmp->next)
 	{
@@ -91,7 +94,8 @@ int check_invalid_token(t_lexer **list)
 		{
 			if (tmp->next->token != WORD)
 			{
-				printf("bash: syntax error near unexpected token %s\n", tmp->next->str);
+				printf("bash: syntax error near unexpected token %s\n"
+					tmp->next->str);
 				free_list_token(list);
 				return (0);
 			}
@@ -101,7 +105,7 @@ int check_invalid_token(t_lexer **list)
 	return (1);
 }
 
-int parse(t_lexer **list)
+int	parse(t_lexer **list)
 {
 	if (check_first_token(list) == 0)
 		return (0);

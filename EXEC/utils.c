@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 00:54:39 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/08 05:07:50 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/13 18:24:16 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	free_array(char **array)
 	}
 	free(array);
 }
+
 int	file_exists(char *path)
 {
 	int	fd;
@@ -52,6 +53,7 @@ int	file_exists(char *path)
 	close(fd);
 	return (1);
 }
+
 int	count_paths(char *path_env)
 {
 	int	count;
@@ -67,6 +69,7 @@ int	count_paths(char *path_env)
 	}
 	return (count);
 }
+
 char	*ft_strjoin(char *variable, char *value)
 {
 	char	*result;

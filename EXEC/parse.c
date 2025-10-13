@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 21:16:12 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/13 16:20:47 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/13 18:34:28 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,10 @@ static t_lexer	*handle_pipe(t_cmd **current_cmd,
 	*current_cmd = (*current_cmd)->next;
 	return (tokens->next);
 }
+
 //saute 2 token pour ajouter la redirection
-static t_lexer	*handle_redir(t_cmd *current_cmd, t_lexer *tokens, t_cmd *cmd_list)
+static t_lexer	*handle_redir(t_cmd *current_cmd
+		t_lexer *tokens, t_cmd *cmd_list)
 {
 	if (!tokens->next || tokens->next->token != WORD)
 	{
@@ -38,7 +40,8 @@ static t_lexer	*handle_redir(t_cmd *current_cmd, t_lexer *tokens, t_cmd *cmd_lis
 	return (tokens->next->next);
 }
 
-static t_lexer	*process_token(t_cmd **current_cmd, t_lexer *tokens, t_cmd *cmd_list)
+static t_lexer	*process_token(t_cmd **current_cmd
+		t_lexer *tokens, t_cmd *cmd_list)
 {
 	if (tokens->token == PIPE)
 		return (handle_pipe(current_cmd, tokens, cmd_list));

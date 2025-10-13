@@ -6,13 +6,13 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 19:24:47 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/01 16:29:52 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/13 18:20:27 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-char *find_env_value(t_env *env, char *variable)
+char	*find_env_value(t_env *env, char *variable)
 {
 	while (env)
 	{
@@ -22,6 +22,7 @@ char *find_env_value(t_env *env, char *variable)
 	}
 	return (NULL);
 }
+
 int	get_var_name_len(char *str, int i)
 {
 	int	len;
@@ -36,6 +37,7 @@ int	get_var_name_len(char *str, int i)
 	}
 	return (len);
 }
+
 void	update_quotes_state(char c, bool *single, bool *doubl)
 {
 	if (c == '\'' && !(*doubl))
@@ -43,6 +45,7 @@ void	update_quotes_state(char c, bool *single, bool *doubl)
 	else if (c == '"' && !(*single))
 		*doubl = !(*doubl);
 }
+
 int	get_normal_var_size(char *input, int *i, t_env *env)
 {
 	int		size;

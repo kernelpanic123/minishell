@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/11 02:32:20 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/11 04:13:45 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/13 18:38:47 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	update_env_var(t_env **env, char *var, char *value)
 	}
 	addback_env(env, ft_strdup(var), ft_strdup(value));
 }
+
 //AHAHAHAHAHHA CHDIR FAIT TOUT
 int	ft_cd(char **args, t_env **env)
 {

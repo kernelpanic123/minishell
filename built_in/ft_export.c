@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/11 03:11:34 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/11 04:15:35 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/13 18:37:52 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ int	is_valid_char(char c, int first)
 			return (1);
 		return (0);
 	}
-	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || 
-		(c >= '0' && c <= '9') || c == '_')
+	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')
+		|| (c >= '0' && c <= '9') || c == '_')
 		return (1);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 21:22:47 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/12 21:36:11 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/13 18:32:39 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int	handle_less(char *file)
 	close(fd);
 	return (1);
 }
+
 //creer le fichier ou efface tout sinon thx les macros ^^
 int	handle_great(char *file)
 {
@@ -52,6 +53,7 @@ int	handle_great(char *file)
 	close(fd);
 	return (1);
 }
+
 //idem mais ajoute a la fin
 int	handle_greatgreat(char *file)
 {

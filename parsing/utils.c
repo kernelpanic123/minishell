@@ -6,31 +6,33 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 18:23:10 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/13 02:16:10 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/13 18:01:49 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int ft_strlen(char *str)
+int	ft_strlen(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i] != '\0')
 		i++;
 	return (i);
 }
-int is_whitespace(char c)
+
+int	is_whitespace(char c)
 {
 	if ((c >= 9 && c <= 13) || (c == ' '))
 		return (1);
 	else
 		return (0);
 }
-int skip_quotes(char *input, t_data *data)
+
+int	skip_quotes(char *input, t_data *data)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (input[i] == '"' && !data->simple_quotes)
@@ -54,21 +56,18 @@ int skip_quotes(char *input, t_data *data)
 	return (i);
 }
 
-char *ft_substr(char *str, int start, int len)
+char	*ft_substr(char *str, int start, int len)
 {
-	char *result;
-	int i;
-	
+	char	*result;
+	int		i;
+
 	if (start >= ft_strlen(str))
 		return (ft_strdup(""));
-	
 	if (len > ft_strlen(str) - start)
 		len = ft_strlen(str) - start;
-	
 	result = malloc(len + 1);
 	if (!result)
 		return (NULL);
-	
 	i = 0;
 	while (i < len)
 	{
@@ -78,6 +77,7 @@ char *ft_substr(char *str, int start, int len)
 	result[i] = '\0';
 	return (result);
 }
+
 char	*remove_quotes(char *str)
 {
 	int		i;

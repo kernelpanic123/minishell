@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 01:14:31 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/08 03:22:24 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/13 18:31:34 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ char	*join_path(char *dir, char *cmd)
 	result[i] = '\0';
 	return (result);
 }
+
 static char	*search_in_paths(char **paths, char *cmd)
 {
 	char	*full_path;

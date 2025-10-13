@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/11 06:50:02 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/12 22:21:25 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/13 18:33:20 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	execute_cmd_in_pipe(t_cmd *cmd, t_minishell *shell)
 		printf("%s: command not found\n", cmd->args[0]);
 		exit(127);
 	}
-	
 	envp = env_to_array(shell->env);
 	execve(path, cmd->args, envp);
 	perror("execve");
@@ -57,6 +56,7 @@ void	setup_pipe_redirs(int prev_fd, int pipe_fd[2], t_cmd *cmd)
 	if (cmd->redirs)
 		handle_redirection(cmd->redirs);
 }
+
 static void	handle_parent_fds(int *prev_fd, int pipe_fd[2], t_cmd *cmd)
 {
 	if (*prev_fd != -1)

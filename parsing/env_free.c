@@ -6,19 +6,19 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 14:55:31 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/12 22:39:15 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/13 18:20:02 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void add_env_list(t_env **env, char **envp)
+void	add_env_list(t_env **env, char **envp)
 {
-	char **dupe;
-	char *value;
-	char *variable;
-	int i;
-	
+	char	**dupe;
+	char	*value;
+	char	*variable;
+	int		i;
+
 	dupe = copy_env(envp);
 	i = 0;
 	while (dupe[i])
@@ -30,9 +30,10 @@ void add_env_list(t_env **env, char **envp)
 	}
 	free_env_copy(dupe);
 }
-void free_env_copy(char **str)
+
+void	free_env_copy(char **str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
@@ -42,10 +43,11 @@ void free_env_copy(char **str)
 	}
 	free(str);
 }
-void free_list_env(t_env **list)
+
+void	free_list_env(t_env **list)
 {
-	t_env *tmp;
-	t_env *clone;
+	t_env	*tmp;
+	t_env	*clone;
 
 	if (!list)
 		return ;

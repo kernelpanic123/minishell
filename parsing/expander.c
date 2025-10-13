@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 00:57:53 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/13 17:02:05 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/13 18:10:57 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	process_char(t_expand_utils *utils, t_expand *exp)
 		exp->in_double = !exp->in_double;
 		utils->result[(*utils->j)++] = utils->input[(*utils->i)++];
 	}
-	else if (utils->input[*utils->i] == '$' && !exp->in_single 
+	else if (utils->input[*utils->i] == '$' && !exp->in_single
 		&& utils->input[*utils->i + 1])
 		expand_var_in_result(utils, exp);
 	else
@@ -66,7 +66,8 @@ char	*expand_variables(char *input, t_env *env, int exit_status)
 	return (result);
 }
 
-char	*process_expansion(char *input, t_env *env, t_data *data, int exit_status)
+char	*process_expansion(char *input, t_env *env
+		t_data *data, int exit_status)
 {
 	(void)data;
 	if (!input)
@@ -75,4 +76,3 @@ char	*process_expansion(char *input, t_env *env, t_data *data, int exit_status)
 		return (ft_strdup(input));
 	return (expand_variables(input, env, exit_status));
 }
-

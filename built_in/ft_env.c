@@ -6,13 +6,13 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/11 02:05:49 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/11 02:06:05 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/13 18:38:25 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int ft_env(t_env *list)
+int	ft_env(t_env *list)
 {
 	while (list != NULL)
 	{

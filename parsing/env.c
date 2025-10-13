@@ -6,15 +6,15 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/14 15:52:23 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/01 16:29:52 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/13 18:12:13 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-char *get_variable(char *str)
+char	*get_variable(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i] && str[i] != '=')
@@ -24,9 +24,9 @@ char *get_variable(char *str)
 	return (ft_substr(str, 0, i));
 }
 
-char *get_value(char *str)
+char	*get_value(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i] && str[i] != '=')
@@ -41,10 +41,10 @@ char *get_value(char *str)
 	return (ft_substr(str, i + 1, ft_strlen(str)));
 }
 
-char **copy_env(char **env)
+char	**copy_env(char **env)
 {
-	char **dupe;
-	int i;
+	char	**dupe;
+	int		i;
 
 	i = 0;
 	while (env[i])
@@ -59,6 +59,7 @@ char **copy_env(char **env)
 	dupe[i] = NULL;
 	return (dupe);
 }
+
 t_env	*new_env_node(char *variable, char *value)
 {
 	t_env	*new;
@@ -69,13 +70,13 @@ t_env	*new_env_node(char *variable, char *value)
 	new->next = NULL;
 	return (new);
 }
-void addback_env(t_env **list, char *variable, char *value)
+
+void	addback_env(t_env **list, char *variable, char *value)
 {
-	t_env *new;
-	t_env *current;
+	t_env	*new;
+	t_env	*current;
 
 	new = new_env_node(variable, value);
-
 	if (!*list)
 	{
 		*list = new;

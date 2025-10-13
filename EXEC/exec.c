@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 05:12:59 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/13 16:21:59 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/13 18:35:10 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,9 @@ static void	execute_builtin_fork(t_cmd *cmd, t_minishell *shell)
 		shell->exit_status = WEXITSTATUS(status);
 }
 
-
 static void	handle_exit_status(int status, t_minishell *shell)
 {
-	int sig;
+	int	sig;
 
 	if (WIFSIGNALED(status))
 	{

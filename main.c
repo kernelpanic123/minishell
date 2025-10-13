@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 21:51:16 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/13 17:34:48 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/13 18:40:09 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -218,4 +218,3 @@ int	main(int argc, char **argv, char **envp)
 	free_list_env(&shell.env);
 	return (0);
 }
-
