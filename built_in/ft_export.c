@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/11 03:11:34 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/13 18:37:52 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/13 19:39:55 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,27 @@ int	is_valid_identifier(char *str)
 	return (1);
 }
 
-int	ft_export(char **args, t_env **env)
+static void	process_arg(char *arg, t_env **env)
 {
-	int		i;
 	char	*var;
 	char	*value;
+
+	if (!is_valid_identifier(arg))
+	{
+		printf("'%s': not valid format\n", arg);
+		return ;
+	}
+	var = get_variable(arg);
+	value = get_value(arg);
+	if (value)
+		update_env_var(env, var, value);
+	free(var);
+	free(value);
+}
+
+int	ft_export(char **args, t_env **env)
+{
+	int	i;
 
 	if (!args[1])
 	{
@@ -68,18 +84,7 @@ int	ft_export(char **args, t_env **env)
 	i = 1;
 	while (args[i])
 	{
-		if (!is_valid_identifier(args[i]))
-		{
-			printf("'%s': not valid format\n", args[i]);
-			i++;
-			continue ;
-		}
-		var = get_variable(args[i]);
-		value = get_value(args[i]);
-		if (value)
-			update_env_var(env, var, value);
-		free(var);
-		free(value);
+		process_arg(args[i], env);
 		i++;
 	}
 	return (0);

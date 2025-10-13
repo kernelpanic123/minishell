@@ -6,11 +6,41 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 16:00:41 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/13 19:02:10 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/13 20:11:36 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+static void	update_quotes(char c, t_data *data)
+{
+	if (c == '\'' && !data->double_quotes)
+		data->simple_quotes = !data->simple_quotes;
+	if (c == '"' && !data->simple_quotes)
+		data->double_quotes = !data->double_quotes;
+}
+
+static int	should_add_space(char c, t_data *data, char *dupe, int j)
+{
+	if (!is_whitespace(c))
+		return (0);
+	if (data->simple_quotes || data->double_quotes)
+		return (0);
+	if (j == 0)
+		return (0);
+	if (is_whitespace(dupe[j - 1]))
+		return (0);
+	return (1);
+}
+
+static int	should_add_char(char c, t_data *data)
+{
+	if (!is_whitespace(c))
+		return (1);
+	if (data->simple_quotes || data->double_quotes)
+		return (1);
+	return (0);
+}
 
 char	*delete_espace(char *input, t_data *data)
 {
@@ -23,13 +53,10 @@ char	*delete_espace(char *input, t_data *data)
 	dupe = malloc(sizeof(char) * ft_strlen(input) + 1);
 	while (input[i] != '\0')
 	{
-		if (input[i] == '\'' && !data->double_quotes)
-			data->simple_quotes = !data->simple_quotes;
-		if (input[i] == '"' && !data->simple_quotes)
-			data->double_quotes = !data->double_quotes;
-		if (is_whitespace(input[i]) && !(data->simple_quotes || data->double_quotes) && j > 0 && !is_whitespace(dupe[j-1]))
+		update_quotes(input[i], data);
+		if (should_add_space(input[i], data, dupe, j))
 			dupe[j++] = input[i];
-		else if (!is_whitespace(input[i]) || (data->simple_quotes || data->double_quotes))
+		else if (should_add_char(input[i], data))
 			dupe[j++] = input[i];
 		i++;
 	}
@@ -39,79 +66,4 @@ char	*delete_espace(char *input, t_data *data)
 	if (data->double_quotes || data->simple_quotes)
 		return (NULL);
 	return (dupe);
-}
-
-int	check_first_token(t_lexer **list)
-{
-	t_lexer	*tmp;
-
-	tmp = *list;
-	if (tmp->token == PIPE)
-	{
-		printf("bash: syntax error near unexpected token '|'\n");
-		free_list_token(list);
-		return (0);
-	}
-	if (!tmp->next && (tmp->token != WORD && tmp->token != PIPE))
-	{
-		printf("bash: syntax error near unexpected token 'newline'\n");
-		free_list_token(list);
-		return (0);
-	}
-	return (1);
-}
-
-int	check_last_token(t_lexer **list)
-{
-	t_lexer	*tmp;
-
-	tmp = *list;
-	while (tmp->next)
-		tmp = tmp->next;
-	if (tmp->token == PIPE)
-	{
-		printf("bash: syntax error near unexpected token '|'\n");
-		free_list_token(list);
-		return (0);
-	}
-	if (!tmp->next && (tmp->token != WORD && tmp->token != PIPE))
-	{
-		printf("bash: syntax error near unexpected token 'newline'\n");
-		free_list_token(list);
-		return (0);
-	}
-	return (1);
-}
-
-int	check_invalid_token(t_lexer **list)
-{
-	t_lexer	*tmp;
-
-	tmp = *list;
-	while (tmp->next)
-	{
-		if (tmp->token != WORD)
-		{
-			if (tmp->next->token != WORD)
-			{
-				printf("bash: syntax error near unexpected token %s\n",
-					tmp->next->str);
-				free_list_token(list);
-				return (0);
-			}
-		}
-		tmp = tmp->next;
-	}
-	return (1);
-}
-
-int	parse(t_lexer **list)
-{
-	if (check_first_token(list) == 0)
-		return (0);
-	if (check_last_token(list) == 0)
-		return (0);
-	if (check_invalid_token(list) == 0)
-		return (0);
-	return (1);
 }
