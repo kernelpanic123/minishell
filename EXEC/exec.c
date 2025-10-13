@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 05:12:59 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/13 00:37:23 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/13 16:21:59 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,11 @@ static void	execute_builtin_fork(t_cmd *cmd, t_minishell *shell)
 
 static void	handle_exit_status(int status, t_minishell *shell)
 {
+	int sig;
+
 	if (WIFSIGNALED(status))
 	{
-		int sig = WTERMSIG(status);
+		sig = WTERMSIG(status);
 		if (sig == SIGQUIT)
 			printf("Quit: %d\n", sig);
 		else if (sig == SIGINT)

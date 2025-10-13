@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 00:44:29 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/13 00:51:10 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/13 02:12:00 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,34 +66,34 @@ void	copy_var_value(char *result, int *j, char *var_value)
 	}
 }
 
-void	expand_normal_var(char *input, int *i, char *result, int *j, t_env *env)
+void	expand_normal_var(t_expand_utils *utils, t_env *env)
 {
 	int		var_len;
 	char	*var_name;
 	char	*var_value;
 
-	var_len = get_var_name_len(input, *i);
+	var_len = get_var_name_len(utils->input, *utils->i);
 	if (var_len > 0)
 	{
-		var_name = ft_substr(input, *i, var_len);
+		var_name = ft_substr(utils->input, *utils->i, var_len);
 		var_value = find_env_value(env, var_name);
 		if (var_value)
-			copy_var_value(result, j, var_value);
+			copy_var_value(utils->result, utils->j, var_value);
 		free(var_name);
-		*i += var_len;
+		*utils->i += var_len;
 	}
 	else
-		result[(*j)++] = '$';
+		utils->result[(*utils->j)++] = '$';
 }
 
-void	expand_var_in_result(char *input, int *i, char *result, int *j, t_env *env, int exit_status)
+void	expand_var_in_result(t_expand_utils *utils, t_expand *exp)
 {
-	(*i)++;
-	if (input[*i] == '?')
+	(*utils->i)++;
+	if (utils->input[*utils->i] == '?')
 	{
-		copy_exit_status(result, j, exit_status);
-		(*i)++;
+		copy_exit_status(utils->result, utils->j, exp->exit_status);
+		(*utils->i)++;
 	}
 	else
-		expand_normal_var(input, i, result, j, env);
+		expand_normal_var(utils, exp->env);
 }

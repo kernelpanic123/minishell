@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 18:23:10 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/08 05:27:05 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/13 02:16:10 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,27 +56,27 @@ int skip_quotes(char *input, t_data *data)
 
 char *ft_substr(char *str, int start, int len)
 {
-    char *result;
-    int i;
-    
-    if (start >= ft_strlen(str))
-        return (ft_strdup(""));
-    
-    if (len > ft_strlen(str) - start)
-        len = ft_strlen(str) - start;
-    
-    result = malloc(len + 1);
-    if (!result)
-        return (NULL);
-    
-    i = 0;
-    while (i < len)
-    {
-        result[i] = str[start + i];
-        i++;
-    }
-    result[i] = '\0';
-    return (result);
+	char *result;
+	int i;
+	
+	if (start >= ft_strlen(str))
+		return (ft_strdup(""));
+	
+	if (len > ft_strlen(str) - start)
+		len = ft_strlen(str) - start;
+	
+	result = malloc(len + 1);
+	if (!result)
+		return (NULL);
+	
+	i = 0;
+	while (i < len)
+	{
+		result[i] = str[start + i];
+		i++;
+	}
+	result[i] = '\0';
+	return (result);
 }
 char	*remove_quotes(char *str)
 {

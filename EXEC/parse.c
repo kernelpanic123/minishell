@@ -6,14 +6,15 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 21:16:12 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/07 23:25:20 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/13 16:20:47 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
 //creer une new_cmd et fait bifurquer quand il y a un pipe vers la cmd 2
-static t_lexer	*handle_pipe(t_cmd **current_cmd, t_lexer *tokens, t_cmd *cmd_list)
+static t_lexer	*handle_pipe(t_cmd **current_cmd,
+	t_lexer *tokens, t_cmd *cmd_list)
 {
 	(*current_cmd)->next = new_cmd();
 	if (!(*current_cmd)->next)
