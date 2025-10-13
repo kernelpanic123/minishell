@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 21:51:16 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/13 17:00:10 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/13 17:34:48 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,6 +184,8 @@ static void	handle_input(char *input, t_minishell *shell, t_data *data)
 		shell->exit_status = 130;
 		g_signal_received = 0;
 	}
+	if (input[0] != '\0')
+		add_history(input);
 	if (process_input(&tokens, input, data, shell))
 		process_command(tokens, shell);
 	free_list_token(&tokens);
