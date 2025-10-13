@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 17:43:35 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/13 18:08:07 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/13 19:01:29 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -248,7 +248,7 @@ void	expand_var_in_result(t_expand_utils *utils, t_expand *exp);
 //expander
 void	process_char(t_expand_utils *utils, t_expand *exp);
 char	*expand_variables(char *input, t_env *env, int exit_status);
-char	*process_expansion(char *input, t_env *env
+char	*process_expansion(char *input, t_env *env,
 			t_data *data, int exit_status);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 16:00:41 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/13 18:44:52 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/13 19:02:10 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ int	check_invalid_token(t_lexer **list)
 		{
 			if (tmp->next->token != WORD)
 			{
-				printf("bash: syntax error near unexpected token %s\n"
+				printf("bash: syntax error near unexpected token %s\n",
 					tmp->next->str);
 				free_list_token(list);
 				return (0);

@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 00:57:53 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/13 18:10:57 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/13 19:01:49 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ char	*expand_variables(char *input, t_env *env, int exit_status)
 	return (result);
 }
 
-char	*process_expansion(char *input, t_env *env
+char	*process_expansion(char *input, t_env *env,
 		t_data *data, int exit_status)
 {
 	(void)data;
