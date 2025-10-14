@@ -4,7 +4,7 @@ SRC = parsing/check_string.c parsing/init_data.c parsing/utils.c main.c parsing/
 
 CFLAGS = -Wall -Wextra -Werror
 
-#valgrind --leak-check=full --suppressions=.valgrind_ignore ./minishell
+#valgrind --leak-check=full --show-leak-kinds=all --suppressions=.valgrind_ignore -s ./minishell
 
 OBJ = $(SRC:.c=.o)
 

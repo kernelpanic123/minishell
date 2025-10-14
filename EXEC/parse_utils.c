@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 20:33:39 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/13 18:34:36 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/15 00:57:17 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,53 +51,3 @@ void	free_cmd_list(t_cmd *cmd_list)
 	}
 }
 
-static void	print_redir_type(int type)
-{
-	if (type == GREAT)
-		printf("  > ");
-	else if (type == GREATGREAT)
-		printf("  >> ");
-	else if (type == LESS)
-		printf("  < ");
-	else if (type == LESSLESS)
-		printf("  << ");
-}
-
-static void	print_redirections(t_redir *redir)
-{
-	if (!redir)
-		return ;
-	printf("Redirect:\n");
-	while (redir)
-	{
-		print_redir_type(redir->type);
-		printf("%s\n", redir->file);
-		redir = redir->next;
-	}
-}
-
-void	print_cmd_list(t_cmd *cmd_list)
-{
-	int	cmd_num;
-	int	i;
-
-	cmd_num = 1;
-	while (cmd_list)
-	{
-		printf("\n cmd %d \n", cmd_num);
-		printf("Args: ");
-		if (cmd_list->args)
-		{
-			i = 0;
-			while (cmd_list->args[i])
-			{
-				printf("%s ", cmd_list->args[i]);
-				i++;
-			}
-		}
-		printf("\n");
-		print_redirections(cmd_list->redirs);
-		cmd_list = cmd_list->next;
-		cmd_num++;
-	}
-}
