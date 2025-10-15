@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 00:44:29 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/13 02:12:00 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/14 02:20:41 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,29 +40,29 @@ int	calculate_expanded_size(char *input, t_env *env)
 void	copy_exit_status(char *result, int *j, int exit_status)
 {
 	char	*exit_str;
-	int		k;
+	int		i;
 
 	exit_str = ft_itoa(exit_status);
-	k = 0;
-	while (exit_str[k])
+	i = 0;
+	while (exit_str[i])
 	{
-		result[*j] = exit_str[k];
+		result[*j] = exit_str[i];
 		(*j)++;
-		k++;
+		i++;
 	}
 	free(exit_str);
 }
 
 void	copy_var_value(char *result, int *j, char *var_value)
 {
-	int	k;
+	int	i;
 
-	k = 0;
-	while (var_value[k])
+	i = 0;
+	while (var_value[i])
 	{
-		result[*j] = var_value[k];
+		result[*j] = var_value[i];
 		(*j)++;
-		k++;
+		i++;
 	}
 }
 
@@ -77,7 +77,7 @@ void	expand_normal_var(t_expand_utils *utils, t_env *env)
 	{
 		var_name = ft_substr(utils->input, *utils->i, var_len);
 		var_value = find_env_value(env, var_name);
-		if (var_value)
+		if (var_value != NULL)
 			copy_var_value(utils->result, utils->j, var_value);
 		free(var_name);
 		*utils->i += var_len;

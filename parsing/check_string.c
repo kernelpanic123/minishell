@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 16:00:41 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/13 20:11:36 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/14 02:19:24 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ static int	should_add_char(char c, t_data *data)
 	return (0);
 }
 
+//on enleve les espaces sauf dans les quotes
 char	*delete_espace(char *input, t_data *data)
 {
 	int		i;

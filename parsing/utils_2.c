@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 04:11:34 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/13 18:05:38 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/14 02:22:15 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	get_nb_len(int n)
 		return (1);
 	while (temp > 0)
 	{
-		temp /= 10;
+		temp = temp / 10;
 		len++;
 	}
 	return (len);
@@ -88,7 +88,7 @@ char	*ft_itoa(int n)
 		while (n > 0)
 		{
 			str[i] = (n % 10) + '0';
-			n /= 10;
+			n = n / 10;
 			i--;
 		}
 	}

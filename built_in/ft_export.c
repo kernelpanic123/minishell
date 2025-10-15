@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/11 03:11:34 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/13 19:39:55 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/14 02:33:11 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	print_export(t_env *env)
 
 int	is_valid_char(char c, int first)
 {
-	if (first)
+	if (first != 0)
 	{
 		if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || c == '_')
 			return (1);
@@ -66,7 +66,7 @@ static void	process_arg(char *arg, t_env **env)
 	}
 	var = get_variable(arg);
 	value = get_value(arg);
-	if (value)
+	if (value != NULL)
 		update_env_var(env, var, value);
 	free(var);
 	free(value);

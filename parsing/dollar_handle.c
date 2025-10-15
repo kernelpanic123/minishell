@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 19:24:47 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/13 18:20:27 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/14 02:17:59 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	get_normal_var_size(char *input, int *i, t_env *env)
 	{
 		var_name = ft_substr(input, *i, var_len);
 		var_value = find_env_value(env, var_name);
-		if (var_value)
+		if (var_value != NULL)
 			size = ft_strlen(var_value);
 		free(var_name);
 		*i += var_len;

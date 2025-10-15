@@ -6,12 +6,14 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/14 15:52:23 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/13 18:12:13 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/14 02:05:07 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
+//genere une sous-string de la variable du path
+//boucle sur la string jusqu'au egal
 char	*get_variable(char *str)
 {
 	int	i;
@@ -24,6 +26,7 @@ char	*get_variable(char *str)
 	return (ft_substr(str, 0, i));
 }
 
+//idem mais avec sa valeur
 char	*get_value(char *str)
 {
 	int	i;
@@ -35,12 +38,12 @@ char	*get_value(char *str)
 		return (NULL);
 	if (i > ft_strlen(str))
 	{
-		printf("here\n");
 		return (ft_strdup(""));
 	}
 	return (ft_substr(str, i + 1, ft_strlen(str)));
 }
 
+//copy l'env pour pouvoir la manipuler trkl
 char	**copy_env(char **env)
 {
 	char	**dupe;

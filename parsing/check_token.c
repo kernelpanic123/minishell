@@ -6,12 +6,14 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 20:10:14 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/13 20:11:47 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/15 03:24:37 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
+//check si le premier token n'est pas pipe
+//et check si deux token consecutifs != WORD sinon error
 int	check_first_token(t_lexer **list)
 {
 	t_lexer	*tmp;
@@ -20,18 +22,17 @@ int	check_first_token(t_lexer **list)
 	if (tmp->token == PIPE)
 	{
 		printf("bash: syntax error near unexpected token '|'\n");
-		free_list_token(list);
 		return (0);
 	}
 	if (!tmp->next && (tmp->token != WORD && tmp->token != PIPE))
 	{
 		printf("bash: syntax error near unexpected token 'newline'\n");
-		free_list_token(list);
 		return (0);
 	}
 	return (1);
 }
 
+//idem mais pour la fin, le dernier token doit etre = WORD
 int	check_last_token(t_lexer **list)
 {
 	t_lexer	*tmp;
@@ -42,18 +43,17 @@ int	check_last_token(t_lexer **list)
 	if (tmp->token == PIPE)
 	{
 		printf("bash: syntax error near unexpected token '|'\n");
-		free_list_token(list);
 		return (0);
 	}
 	if (!tmp->next && (tmp->token != WORD && tmp->token != PIPE))
 	{
 		printf("bash: syntax error near unexpected token 'newline'\n");
-		free_list_token(list);
 		return (0);
 	}
 	return (1);
 }
 
+//cette fois ci on boucle sur toute la liste chaine
 int	check_invalid_token(t_lexer **list)
 {
 	t_lexer	*tmp;
@@ -67,7 +67,6 @@ int	check_invalid_token(t_lexer **list)
 			{
 				printf("bash: syntax error near unexpected token %s\n",
 					tmp->next->str);
-				free_list_token(list);
 				return (0);
 			}
 		}

@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 19:30:09 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/13 18:07:19 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/14 02:06:36 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ static int	skip_token(char *input, int i)
 	return (i);
 }
 
+//coeur du programme va ajouter les elem
+//a la liste chaine
 void	add_element(char *input, t_lexer **list)
 {
 	int		i;
