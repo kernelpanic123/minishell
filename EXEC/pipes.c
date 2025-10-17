@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/11 06:50:02 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/15 03:35:02 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/17 09:20:26 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void	execute_cmd_in_pipe(t_cmd *cmd, t_minishell *shell)
 	if (is_builtin(cmd->args[0]))
 	{
 		shell->exit_status = execute_builtin(cmd->args, shell);
+		free_list_env(&shell->env);
+		free_cmd_list(cmd);
 		exit(shell->exit_status);
 	}
 	path = find_command_path(cmd->args[0], shell->env);
@@ -37,8 +39,6 @@ void	execute_cmd_in_pipe(t_cmd *cmd, t_minishell *shell)
 	envp = env_to_array(shell->env);
 	execve(path, cmd->args, envp);
 	perror("execve");
-	free(path);
-	free_array(envp);
 	exit(127);
 }
 

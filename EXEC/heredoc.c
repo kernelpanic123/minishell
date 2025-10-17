@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 21:29:40 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/13 18:34:48 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/17 08:53:49 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,25 +43,16 @@ char	*read_heredoc(char *delimiter)
 int	handle_heredoc(char *str)
 {
 	int		pipe_fd[2];
-	pid_t	pid;
 
 	if (pipe(pipe_fd) == -1)
 	{
 		perror("pipe");
 		return (0);
 	}
-	pid = fork();
-	if (pid == 0)
-	{
-		close(pipe_fd[0]);
-		write(pipe_fd[1], str, ft_strlen(str));
-		close(pipe_fd[1]);
-		exit(0);
-	}
+	write(pipe_fd[1], str, ft_strlen(str));
 	close(pipe_fd[1]);
 	dup2(pipe_fd[0], STDIN_FILENO);
 	close(pipe_fd[0]);
-	waitpid(pid, NULL, 0);
 	return (1);
 }
 

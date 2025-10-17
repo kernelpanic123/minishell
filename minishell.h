@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 17:43:35 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/13 19:01:29 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/17 08:10:56 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ typedef struct s_minishell
 {
 	t_env	*env;
 	int		exit_status;
+	t_lexer *list;
 }	t_minishell;
 
 typedef struct s_redir

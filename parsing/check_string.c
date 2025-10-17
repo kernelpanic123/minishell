@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 16:00:41 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/14 02:19:24 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/17 07:33:59 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,9 @@ char	*delete_espace(char *input, t_data *data)
 		j--;
 	dupe[j] = '\0';
 	if (data->double_quotes || data->simple_quotes)
+	{
+		free(dupe);
 		return (NULL);
+	}
 	return (dupe);
 }

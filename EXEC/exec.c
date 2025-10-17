@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 05:12:59 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/15 06:14:02 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/17 07:53:42 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,6 @@ static void	execute_external_cmd(t_cmd *cmd, t_minishell *shell, char *path)
 		envp = env_to_array(shell->env);
 		execve(path, cmd->args, envp);
 		perror("execve");
-		free_array(envp);
-		free(path); 
 		exit(127);
 	}
 	else
