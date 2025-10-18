@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 21:51:16 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/17 09:10:46 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/18 09:16:56 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,7 +168,7 @@ static void	process_command(t_lexer *tokens, t_minishell *shell)
 	{
 		handle_heredocs(cmd_list);
 		setup_signals_execution();
-		execute_commands(cmd_list, shell);
+		execute_commands(cmd_list, shell, tokens);
 		setup_signals_interactive();
 		free_cmd_list(cmd_list);
 	}

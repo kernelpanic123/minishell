@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 20:33:39 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/15 02:11:47 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/18 10:46:09 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,3 @@ void	free_cmd_list(t_cmd *cmd_list)
 		cmd_list = tmp;
 	}
 }
-

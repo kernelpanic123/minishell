@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/11 06:50:02 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/17 09:20:26 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/18 10:46:56 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 //https://www.youtube.com/watch?v=NlFvGZoAgTs
 //fork function 
 //https://youtu.be/cex9XrZCU14?si=7SMM3HUvdRXVkpHq
-void	execute_cmd_in_pipe(t_cmd *cmd, t_minishell *shell)
+void	execute_cmd_in_pipe(t_cmd *cmd, t_minishell *shell,
+		t_lexer *tokens, t_cmd *head)
 {
 	char	*path;
 	char	**envp;
@@ -26,8 +27,9 @@ void	execute_cmd_in_pipe(t_cmd *cmd, t_minishell *shell)
 	if (is_builtin(cmd->args[0]))
 	{
 		shell->exit_status = execute_builtin(cmd->args, shell);
+		free_list_token(&tokens);
+		free_cmd_list(head);
 		free_list_env(&shell->env);
-		free_cmd_list(cmd);
 		exit(shell->exit_status);
 	}
 	path = find_command_path(cmd->args[0], shell->env);
@@ -70,12 +72,14 @@ static void	handle_parent_fds(int *prev_fd, int pipe_fd[2], t_cmd *cmd)
 	}
 }
 
-void	execute_pipeline(t_cmd *cmd_list, t_minishell *shell)
+void	execute_pipeline(t_cmd *cmd_list, t_minishell *shell, t_lexer *tokens)
 {
 	int		pipe_fd[2];
 	int		prev_fd;
 	pid_t	pid;
+	t_cmd	*head;
 
+	head = cmd_list;
 	prev_fd = -1;
 	while (cmd_list)
 	{
@@ -85,7 +89,7 @@ void	execute_pipeline(t_cmd *cmd_list, t_minishell *shell)
 		if (pid == 0)
 		{
 			setup_pipe_redirs(prev_fd, pipe_fd, cmd_list);
-			execute_cmd_in_pipe(cmd_list, shell);
+			execute_cmd_in_pipe(cmd_list, shell, tokens, head);
 		}
 		handle_parent_fds(&prev_fd, pipe_fd, cmd_list);
 		cmd_list = cmd_list->next;

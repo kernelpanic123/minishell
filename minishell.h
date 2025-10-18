@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 17:43:35 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/17 08:10:56 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/18 10:45:42 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ typedef struct s_minishell
 {
 	t_env	*env;
 	int		exit_status;
-	t_lexer *list;
+	t_lexer	*list;
 }	t_minishell;
 
 typedef struct s_redir
@@ -97,7 +97,7 @@ void	execute_simple_cmd(t_cmd *cmd, t_minishell *shell);
 
 //exec_2
 char	**env_to_array(t_env *env);
-void	execute_commands(t_cmd *cmd, t_minishell *shell);
+void	execute_commands(t_cmd *cmd, t_minishell *shell, t_lexer *tokens);
 
 //signal
 void	handle_signal(int sig);
@@ -114,9 +114,10 @@ void	process_heredocs(t_cmd *cmd);
 char	*strjoin_heredoc(char *s1, char *s2);
 
 //pipes
-void	execute_cmd_in_pipe(t_cmd *cmd, t_minishell *shell);
+void	execute_cmd_in_pipe(t_cmd *cmd, t_minishell *shell,
+			t_lexer *tokens, t_cmd *head);
 void	setup_pipe_redirs(int prev_fd, int pipe_fd[2], t_cmd *cmd);
-void	execute_pipeline(t_cmd *cmd_list, t_minishell *shell);
+void	execute_pipeline(t_cmd *cmd_list, t_minishell *shell, t_lexer *tokens);
 
 //check_bulitin
 int		is_builtin(char *cmd);

@@ -6,17 +6,17 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 00:35:44 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/15 03:36:29 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/18 09:15:19 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void	execute_commands(t_cmd *cmd, t_minishell *shell)
+void	execute_commands(t_cmd *cmd, t_minishell *shell, t_lexer *tokens)
 {
 	if (cmd->next)
 	{
-		execute_pipeline(cmd, shell);
+		execute_pipeline(cmd, shell, tokens);
 		return ;
 	}
 	execute_simple_cmd(cmd, shell);
