@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 21:51:16 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/18 09:16:56 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/22 08:45:48 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,10 +166,13 @@ static void	process_command(t_lexer *tokens, t_minishell *shell)
 	cmd_list = parse_commands(tokens);
 	if (cmd_list != NULL)
 	{
+		shell->list = tokens;
+		shell->cmd_list = cmd_list;
 		handle_heredocs(cmd_list);
 		setup_signals_execution();
 		execute_commands(cmd_list, shell, tokens);
 		setup_signals_interactive();
+		shell->cmd_list = NULL;
 		free_cmd_list(cmd_list);
 	}
 }
@@ -187,7 +190,11 @@ static void	handle_input(char *input, t_minishell *shell, t_data *data)
 	if (input[0] != '\0')
 		add_history(input);
 	if (process_input(&tokens, input, data, shell))
+	{
+		shell->list = tokens;
 		process_command(tokens, shell);
+		shell->list = NULL;
+	}
 	free_list_token(&tokens);
 }
 
@@ -201,6 +208,8 @@ int	main(int argc, char **argv, char **envp)
 	(void)argv;
 	init_struct(&data);
 	shell.env = NULL;
+	shell.list = NULL;
+	shell.cmd_list = NULL;
 	shell.exit_status = 0;
 	add_env_list(&shell.env, envp);
 	setup_signals_interactive();
