@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 17:43:35 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/22 08:25:54 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/22 08:41:09 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,13 +68,6 @@ typedef struct s_expand_utils
 	int		*j;
 }	t_expand_utils;
 
-typedef struct s_minishell
-{
-	t_env	*env;
-	int		exit_status;
-	t_lexer	*list;
-}	t_minishell;
-
 typedef struct s_redir
 {
 	int				type;
@@ -89,6 +82,14 @@ typedef struct s_cmd
 	t_redir			*redirs;
 	struct s_cmd	*next;
 }	t_cmd;
+
+typedef struct s_minishell
+{
+	t_env	*env;
+	int		exit_status;
+	t_lexer	*list;
+	t_cmd	*cmd_list;
+}	t_minishell;
 
 //EXEC
 

@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/11 03:41:36 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/22 08:22:45 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/22 08:42:20 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,30 +65,34 @@ static int	count_args(char **args)
 	return (i);
 }
 
+static void	clean_exit(t_minishell *shell, int exit_code)
+{
+	free_list_token(&shell->list);
+	free_cmd_list(shell->cmd_list);
+	free_list_env(&shell->env);
+	exit(exit_code);
+}
+
 int	ft_exit(t_minishell *shell, char **args)
 {
 	int	exit_code;
-	int	arg_nbr;
+	int	arg_count;
 
 	printf("exit\n");
-	arg_nbr = count_args(args);
-	if (arg_nbr == 1)
-	{
-		free_list_env(&shell->env);
-		exit(shell->exit_status);
-	}
+	arg_count = count_args(args);
+	if (arg_count == 1)
+		clean_exit(shell, shell->exit_status);
 	if (!is_numeric(args[1]))
 	{
-		printf("error non numeric argument\n");
-		free_list_env(&shell->env);
-		exit(2);
+		printf("non numeric argument\n");
+		clean_exit(shell, 2);
 	}
-	if (arg_nbr > 2)
+	if (arg_count > 2)
 	{
 		printf("too many arguments\n");
 		return (1);
 	}
 	exit_code = ft_atoi(args[1]);
-	free_list_env(&shell->env);
-	exit(exit_code % 256);
+	clean_exit(shell, exit_code % 256);
+	return (0);
 }
