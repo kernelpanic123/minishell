@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 21:51:16 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/22 08:45:48 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/22 14:35:49 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -206,10 +206,7 @@ int	main(int argc, char **argv, char **envp)
 
 	(void)argc;
 	(void)argv;
-	init_struct(&data);
-	shell.env = NULL;
-	shell.list = NULL;
-	shell.cmd_list = NULL;
+	init_struct(&data, &shell);
 	shell.exit_status = 0;
 	add_env_list(&shell.env, envp);
 	setup_signals_interactive();

@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 17:43:35 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/22 08:41:09 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/22 14:35:30 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,7 +196,7 @@ char	*ft_substr(char *str, int start, int len);
 char	*remove_quotes(char *str);
 
 //init_data
-void	init_struct(t_data *data);
+void	init_struct(t_data *data, t_minishell *shell);
 int		process_input(t_lexer **list, char *input,
 			t_data *data, t_minishell *shell);
 
