@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 17:43:35 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/18 10:45:42 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/22 08:25:54 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,8 @@ int		is_builtin(char *cmd);
 int		execute_builtin(char **args, t_minishell *shell);
 
 //ft_exit
-int		ft_exit(t_minishell *shell);
+int		ft_exit(t_minishell *shell, char **args);
+int		ft_atoi(const char *str);
 
 //ft_cd
 void	update_env_var(t_env **env, char *var, char *value);

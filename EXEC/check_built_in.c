@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/11 03:51:46 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/13 18:35:29 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/22 08:25:21 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,6 @@ int	execute_builtin(char **args, t_minishell *shell)
 	if (ft_strcmp(args[0], "env") == 0)
 		return (ft_env(shell->env));
 	if (ft_strcmp(args[0], "exit") == 0)
-		return (ft_exit(shell));
+		return (ft_exit(shell, args));
 	return (0);
 }
