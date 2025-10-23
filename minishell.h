@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 17:43:35 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/22 14:35:30 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/23 19:27:07 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,7 +146,7 @@ int		ft_unset(char **args, t_env **env);
 int		ft_echo(char **args);
 
 //ft_env.c
-int		ft_env(t_env *list);
+int		ft_env(t_env *list, char **args);
 
 //pwd
 int		ft_pwd(void);

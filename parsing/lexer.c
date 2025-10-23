@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 19:30:09 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/14 02:06:36 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/23 19:10:26 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,23 +23,29 @@ t_lexer	*new_node(int token, char *str)
 	return (new);
 }
 
-//cd caca | echo "cacacacaca         "
 static int	skip_token(char *input, int i)
 {
 	char	quote;
 
-	if (input[i] == '"' || input[i] == '\'')
+	if (input[i] == '|' || input[i] == '>' || input[i] == '<')
 	{
-		quote = input[i];
-		i++;
-		while (input[i] && input[i] != quote)
-			i++;
-		if (input[i] == quote)
-			i++;
+		if ((input[i] == '>' && input[i + 1] == '>') 
+			|| (input[i] == '<' && input[i + 1] == '<'))
+			return (i + 2);
+		return (i + 1);
 	}
-	else
+	while (input[i] && !is_whitespace(input[i]) 
+		&& input[i] != '|' && input[i] != '>' && input[i] != '<')
 	{
-		while (input[i] && !is_whitespace(input[i]))
+		if (input[i] == '"' || input[i] == '\'')
+		{
+			quote = input[i++];
+			while (input[i] && input[i] != quote)
+				i++;
+			if (input[i] == quote)
+				i++;
+		}
+		else
 			i++;
 	}
 	return (i);
