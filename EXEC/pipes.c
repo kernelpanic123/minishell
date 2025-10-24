@@ -6,11 +6,18 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/11 06:50:02 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/18 10:46:56 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/24 10:22:44 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+static void free_stuff(t_minishell *shell, t_lexer *tokens, t_cmd *head)
+{
+	free_list_token(&tokens);
+	free_cmd_list(head);
+	free_list_env(&shell->env);
+}
 
 //pipe child parent etc
 //https://www.youtube.com/watch?v=NlFvGZoAgTs
@@ -27,15 +34,14 @@ void	execute_cmd_in_pipe(t_cmd *cmd, t_minishell *shell,
 	if (is_builtin(cmd->args[0]))
 	{
 		shell->exit_status = execute_builtin(cmd->args, shell);
-		free_list_token(&tokens);
-		free_cmd_list(head);
-		free_list_env(&shell->env);
+		free_stuff(shell, tokens, head);
 		exit(shell->exit_status);
 	}
 	path = find_command_path(cmd->args[0], shell->env);
 	if (!path)
 	{
 		printf("%s: command not found\n", cmd->args[0]);
+		free_stuff(shell, tokens, head);
 		exit(127);
 	}
 	envp = env_to_array(shell->env);
