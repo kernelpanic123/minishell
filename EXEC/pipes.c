@@ -6,13 +6,13 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/11 06:50:02 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/24 10:22:44 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/27 12:00:22 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static void free_stuff(t_minishell *shell, t_lexer *tokens, t_cmd *head)
+static void	free_stuff(t_minishell *shell, t_lexer *tokens, t_cmd *head)
 {
 	free_list_token(&tokens);
 	free_cmd_list(head);

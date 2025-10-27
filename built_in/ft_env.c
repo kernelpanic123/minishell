@@ -6,7 +6,7 @@
 /*   By: abtouait <abtouait@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/11 02:05:49 by abtouait          #+#    #+#             */
-/*   Updated: 2025/10/23 19:21:20 by abtouait         ###   ########.fr       */
+/*   Updated: 2025/10/27 11:59:44 by abtouait         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	count_args(char **args)
 
 int	ft_env(t_env *list, char **args)
 {
-	int arg_count;
+	int	arg_count;
 
 	arg_count = count_args(args);
 	if (arg_count > 1)
